@@ -89,8 +89,24 @@ const logout = (req,res) => {
     }
 }
 
+// check
+const check = (req,res)=> {
+    try{
+        res.status(200).json({
+            message: 'authorized',
+            user: req.user,
+        })
+    }catch(err){
+        console.log(err)
+        res.status(401).json({
+            error: 'unauthorized'
+        })
+    }
+}
+
 module.exports = {
     signup,
     login,
+    check,
     logout,
 }
